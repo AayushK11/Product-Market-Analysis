@@ -1,8 +1,7 @@
-import pandas as pd
 from model_generation import *
 
-def createModel():
-    createCNNModel()
+def create_model():
+    create_cnn_model()
 
 if __name__ == "__main__":
-    createModel()
+    create_model()

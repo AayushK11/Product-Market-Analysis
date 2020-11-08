@@ -5,5 +5,5 @@ from keras.utils.np_utils import to_categorical as tcg
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from get_data import *
 
-def createCNNModel():
-    trainData, testData = getFilePath()
+def create_cnn_model():
+    trainData, testData = get_file_path()
