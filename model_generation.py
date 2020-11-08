@@ -1,9 +1,9 @@
-import numpy as np
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization
-from keras.utils.np_utils import to_categorical as tcg
-from keras.layers.convolutional import Conv2D, MaxPooling2D
+# import numpy as np
+# from keras.models import Sequential
+# from keras.layers import Dense, Dropout, Flatten, BatchNormalization
+# from keras.utils.np_utils import to_categorical as tcg
+# from keras.layers.convolutional import Conv2D, MaxPooling2D
 from get_data import *
 
 def create_cnn_model():
-    trainData, testData = get_file_path()
+    train_data, test_data = get_file_path()
