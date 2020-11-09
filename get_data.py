@@ -1,6 +1,7 @@
 import numpy as np
 import tkinter as tk
 import pandas as pd
+import os
 from tkinter.filedialog import askopenfilename
 
 #Module takes 1 parameter - csv_file path
@@ -26,7 +27,7 @@ def get_file():
 
 def convert_image(pixels_1d):
     pixels_2d = np.reshape(pixels_1d, (48, 48))
-    pixels_2d = np.array(pixels_2d,dtype=np.uint8)
+    pixels_2d = np.array(pixels_2d, dtype=np.uint8)
     return pixels_2d
 
 def split_train_test(filepath):
@@ -50,6 +51,13 @@ def split_train_test(filepath):
     return train_data, test_data
 
 def get_file_path():
-    filepath = get_file()
+    try:
+        with open('fer2013.csv', 'r'):
+            filepath = 'fer2013.csv'
+            print("<-------------------Dataset Found. Splitting And Cleaning Data------------------->")
+    except FileNotFoundError:
+        print("<-------------------Dataset Not Found------------------->")
+        filepath = get_file()
+
     train_data, test_data = split_train_test(filepath)
     return train_data, test_data
