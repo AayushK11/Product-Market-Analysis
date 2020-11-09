@@ -1,7 +1,6 @@
 import numpy as np
 import tkinter as tk
 import pandas as pd
-import os
 from tkinter.filedialog import askopenfilename
 
 #Module takes 1 parameter - csv_file path

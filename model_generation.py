@@ -1,5 +1,5 @@
 import numpy as np
-from keras.models import Sequential, load_model, model_from_json
+from keras.models import Sequential, model_from_json
 from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
 from keras.utils.np_utils import to_categorical as tcg
 from keras.layers.convolutional import MaxPooling2D, Convolution2D
@@ -33,8 +33,8 @@ def split_data(train_data, test_data):
     xte = np.array(xte)
     ytr = np.array(ytr)
     yte = np.array(yte)
-    xtr = xtr.reshape(xtr.shape[0],xtr.shape[1],xtr.shape[2],1).astype('float32')/32
-    xte = xte.reshape(xte.shape[0],xte.shape[1],xte.shape[2],1).astype('float32')/32
+    xtr = xtr.reshape(xtr.shape[0], xtr.shape[1], xtr.shape[2] ,1).astype('float32')/32
+    xte = xte.reshape(xte.shape[0], xte.shape[1], xte.shape[2], 1).astype('float32')/32
     ytr = tcg(ytr)
     yte = tcg(yte)
     return xtr, ytr, xte, yte
