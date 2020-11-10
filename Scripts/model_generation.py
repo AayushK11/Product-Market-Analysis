@@ -82,9 +82,9 @@ def model_structure(xtr, ytr, xte, yte):
     print("<-------------------Model Trained. Saving as JSON File------------------->")
 
     model_json = model.to_json()
-    with open("CNN_model.json", "w") as json_file:
+    with open("Model\CNN_model.json", "w") as json_file:
         json_file.write(model_json)
-    model.save_weights("CNN_weights.h5")
+    model.save_weights("Model\CNN_weights.h5")
     plot_graph(history)
 
 def plot_graph(history):
@@ -105,11 +105,11 @@ def plot_graph(history):
     plt.show()
 
 def load_model():
-    json_file = open("CNN_model.json", 'r')
+    json_file = open("Model\CNN_model.json", 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)
-    loaded_model.load_weights("CNN_weights.h5")
+    loaded_model.load_weights("Model\CNN_weights.h5")
     return loaded_model
 
 def create_cnn_model():
