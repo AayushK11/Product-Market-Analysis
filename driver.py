@@ -10,7 +10,7 @@ def read_model():
 
 if __name__ == "__main__":
     try:
-        with open('Model\CNN_model.json', 'r'):
+        with open('Model/CNN_model.json', 'r'):
             print("<-------------------Model Found------------------->")
             read_model()
     except FileNotFoundError:
