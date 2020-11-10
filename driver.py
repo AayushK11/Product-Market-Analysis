@@ -1,18 +1,21 @@
 from model_generation import *
+from model_prediction import *
+import os
 
 def create_model():
     create_cnn_model()
-    read_model()
+    start_emotion_prediction()
 
-def read_model():
+def start_emotion_prediction():
     model = load_model()
-    print(model.summary())
+    get_face(model)
 
 if __name__ == "__main__":
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
     try:
-        with open('Model/CNN_model.json', 'r'):
+        with open('Model/CNN_Model.json', 'r'):
             print("<-------------------Model Found------------------->")
-            read_model()
+            start_emotion_prediction()
     except FileNotFoundError:
         print("<-------------------Model does not exist. Creating one------------------->")
         create_model()

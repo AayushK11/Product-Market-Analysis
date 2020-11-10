@@ -52,7 +52,7 @@ def split_train_test(filepath):
 def get_file_path():
     try:
         with open('Dataset/fer2013.csv', 'r'):
-            filepath = 'fer2013.csv'
+            filepath = 'Dataset/fer2013.csv'
             print("<-------------------Dataset Found. Splitting And Cleaning Data------------------->")
     except FileNotFoundError:
         print("<-------------------Dataset Not Found------------------->")

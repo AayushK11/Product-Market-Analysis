@@ -1,0 +1,41 @@
+----Layer 1----
+Conv2D. 16 filters. 3x3 kernel size. Same padding.  48x48 --> 48x48
+Conv2D. 16 filters. 3x3 kernel size. Same padding.  48x48 --> 48x48
+Relu Activation                                     48x48 --> 48x48
+Batch Normalization                                 48x48 --> 48x48
+MaxPooling2D. 2x2 pool size                         48x48 --> 24x24
+Dropout. 35%.                                       24x24 --> 24x24
+---------------
+
+----Layer 2----
+Conv2D. 32 filters. 3x3 kernel size. Same padding.  24x24 --> 24x24
+Conv2D. 32 filters. 3x3 kernel size. Same padding.  24x24 --> 24x24
+Relu Activation                                     24x24 --> 24x24
+Batch Normalization                                 24x24 --> 24x24
+MaxPooling2D. 2x2 pool size                         24x24 --> 12x12
+Dropout. 35%.                                       12x12 --> 12x12
+---------------
+
+----Layer 3----
+Conv2D. 64 filters. 3x3 kernel size. Same padding.  12x12 --> 12x12
+Conv2D. 64 filters. 3x3 kernel size. Same padding.  12x12 --> 12x12
+Relu Activation                                     12x12 --> 12x12
+Batch Normalization                                 12x12 --> 12x12
+MaxPooling2D. 2x2 pool size                         12x12 --> 6x6
+Dropout. 35%.                                       6x6 --> 6x6
+---------------
+
+----Layer 4----
+Conv2D. 128 filters. 3x3 kernel size                6x6 --> 4x4
+Conv2D. 128 filters. 3x3 kernel size                4x4 --> 2x2
+Relu Activation                                     2x2 --> 2x2
+Batch Normalization                                 2x2 --> 2x2
+Dropout. 40%.                                       2x2 --> 2x2
+---------------
+
+----Layer 5----
+Flatten
+256 Nodes. Relu Activated
+50% Dropout
+7 Nodes. Softmax Activated
+---------------
