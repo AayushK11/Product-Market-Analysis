@@ -8,7 +8,8 @@ def create_model():
 
 def start_emotion_prediction():
     model = load_model()
-    get_face(model)
+    average_emotion = get_face(model)
+    print(average_emotion)
 
 if __name__ == "__main__":
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
