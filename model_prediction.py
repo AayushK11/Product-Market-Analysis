@@ -16,7 +16,8 @@ def predict(image, model):
     output = model.predict(image)
     index = np.argmax(output)
     emotion = ["Angry", "Disgust", "Fear", "Happy", "Sad", "Suprise", "Neutral"]
-    return emotion[index]
+    color = [(0, 0, 255), (255, 0, 255), (0, 0, 255), (0, 255, 0), (0, 255, 255), (0, 255, 255), (0, 255, 0)]
+    return emotion[index], color[index]
 
 def get_face(model):
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' 
@@ -32,12 +33,13 @@ def get_face(model):
         face_cascade = cv2.CascadeClassifier(haar_model)
         faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minNeighbors=5, minSize=(20, 20))
         for (x, y, w, h) in faces:
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 0)
             face = frame[y:y+h, x:x+w]
             face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
             face = reshape_image(face)
-            text = predict(face, model)
-            cv2.rectangle(frame, (x+w-150, y+h), (x+w, y+h+30), (0, 255, 0), -1)
+            text, color = predict(face, model)
+            cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
+            cv2.rectangle(frame, (x+w-150, y+h), (x+w, y+h+30), color, -1)
             cv2.putText(frame, text, (x+w-100, y+h+20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
 
         cv2.imshow("Feed", frame)

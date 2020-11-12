@@ -19,6 +19,12 @@ from tkinter.filedialog import askopenfilename
 #28709 training images
 #7178 test images
 
+#Flip image is an augmentation technique where we invert the image vertically and add it to the database
+
+def flip_image(pixels_2d):
+    flipped_imge = np.fliplr(pixels_2d)
+    return flipped_imge
+
 def get_file():
     root = tk.Tk()
     root.withdraw()
@@ -39,14 +45,20 @@ def split_train_test(filepath):
             pixels_1d = csv_file.iloc[i][1].split(' ')
             pixels_2d = convert_image(pixels_1d)
             emotion = csv_file.iloc[i][0]
+            flipped_image = flip_image(pixels_2d)
+            flipped_set = (flipped_image, emotion)
             current_set = (pixels_2d, emotion)
             train_data.append(current_set)
+            train_data.append(flipped_set)
         else:
             pixels_1d = csv_file.iloc[i][1].split(' ')
             pixels_2d = convert_image(pixels_1d)
             emotion = csv_file.iloc[i][0]
+            flipped_image = flip_image(pixels_2d)
+            flipped_set = (flipped_image, emotion)
             current_set = (pixels_2d, emotion)
             test_data.append(current_set)
+            test_data.append(flipped_set)
     return train_data, test_data
 
 def get_file_path():

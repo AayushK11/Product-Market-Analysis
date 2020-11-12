@@ -7,7 +7,7 @@ from keras.layers.convolutional import MaxPooling2D, Convolution2D
 import matplotlib.pyplot as plt
 from get_data import *
 
-#Accuracy -> 64.87% Train. 60.07% Test
+#Accuracy -> 68.61% Train. 65.92% Test
 #Saved as CNN_model.json with weights as CNN_weights.h5
 #Model Structure defined in CNN_Model_Details
 #Model Loss graph is CNN_Loss_graph
