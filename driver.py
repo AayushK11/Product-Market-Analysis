@@ -1,4 +1,3 @@
-from tkinter import font
 from model_generation import *
 from model_prediction import *
 from graphical_components import *
@@ -7,6 +6,7 @@ from tkinter import *
 from tkinter import messagebox 
 
 class Graphic():
+    #Graphical User Interface
     def __init__(self):
         self.root = Tk()
         self.root.title("Product Market Analysis")
@@ -90,14 +90,14 @@ class Graphic():
 def check_credentials(username, password):
     flag = 0
 
-    user = open('Dataset\Login_User', 'r')
+    user = open('Dataset/Login_User', 'r')
     for credentials in user:
         cred = credentials.split("_#_sep_#_")
         if str(username)==cred[0] and str(password)==cred[1]:
             flag = 1
     user.close()
 
-    admin =  open('Dataset\Login_Admin', 'r')
+    admin =  open('Dataset/Login_Admin', 'r')
     for credentials in admin:
         cred = credentials.split("_#_sep_#_")
         if str(username)==cred[0] and str(password)==cred[1]:
@@ -109,13 +109,13 @@ def check_credentials(username, password):
 def create_account(username, password, choice):
     
     if choice==1:
-        user = open('Dataset\Login_User', 'a')
+        user = open('Dataset/Login_User', 'a')
         text = "\n"+username+"_#_sep_#_"+password
         user.write(text)
         user.close()
 
     if choice==2:
-        admin = open('Dataset\Login_Admin', 'a')
+        admin = open('Dataset/Login_Admin', 'a')
         text = "\n"+username+"_#_sep_#_"+password
         admin.write(text)
         admin.close()

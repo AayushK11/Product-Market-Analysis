@@ -11,7 +11,7 @@ white = "#FFFFFF"
 black = "#000000"
 
 def logo_reshape(x, y):
-    logo_icon = Image.open('Images\PMA_Icon.png')
+    logo_icon = Image.open('Images/PMA_Icon.png')
     logo_icon = logo_icon.resize((x, y))
     logo_icon = ImageTk.PhotoImage(logo_icon)
     return logo_icon
