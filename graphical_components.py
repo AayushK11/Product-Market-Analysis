@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import font
 import tkinter.ttk
 from PIL import ImageTk, Image
 
@@ -89,3 +90,49 @@ def register_page(frame):
     b2.place(relx=0.65, rely=0.9, anchor=CENTER)
 
     return (i1, l1, s1, f1, l2, l3, t1, l4, t2, l5, r1, r2, b1, b2), logo_icon
+
+def home_admin(frame, product, Username):
+
+    i1 = Button(frame, bg=dark_blue, bd=0, width=100, height=100)
+    l1 = Label(frame, text="Product\nMarket\nAnalysis", fg=light_green, bg=dark_blue, font="None 10 bold")
+    s1 = tkinter.ttk.Separator(frame, orient=VERTICAL)
+    b1 = Button(frame, bg=dark_blue, fg=white, font="None 10", bd=0, text=Username)
+    f1 = Frame(frame, bg=light_dark_blue, bd=2, width=400, height=300)
+    b2 = Button(frame, bg=blue, fg=white, font="None 10", bd=2, text="+")
+
+    frames = []
+    buttons = []
+    labels = []
+
+    for i in product:
+        index = product.index(i)
+        f_1 = Frame(f1, bg=white, bd=2, width=20, height=25)
+        f_1.grid(row=index, column=0, pady=(5,5), padx=(5, 5))
+        l_1 = Label(f1, text=index, fg=black, bg=white, font="None 10")
+        l_1.grid(row=index, column=0, pady=(5,5))
+        f_2 = Frame(f1, bg=white, bd=2, width=400, height=25)
+        f_2.grid(row=index, column=1, pady=(5,5), padx=(5, 5))
+        l_2 =Label(f1, text=i, fg=black, bg=white, font="None 10")
+        l_2.grid(row=index, column=1, pady=(5,5))
+        f_3 = Frame(f1, bg=white, bd=2, width=20, height=25)
+        f_3.grid(row=index, column=2, pady=(5,5), padx=(5, 5))
+        rb_1 = Radiobutton(f1, text="x", fg=black, bg=white, bd=0, indicatoron=0, font="None 10")
+        rb_1.grid(row=index, column=2, pady=(5,5))
+        frames.append(f_1)
+        frames.append(f_2)
+        frames.append(f_3)
+        labels.append(l_1)
+        labels.append(l_2)
+        buttons.append(rb_1)
+        
+    
+    logo_icon = logo_reshape(100, 100) 
+
+    i1.place(relx=0.01, rely=0.15, anchor=W)
+    l1.place(relx=0.25, rely=0.15, anchor=W)
+    s1.place(relx=0.2, rely=0.15, anchor=W, relheight=0.15)
+    b1.place(relx=0.9, rely=0.15, anchor=E)
+    f1.place(relx=0.5, rely=0.45, anchor=CENTER)
+    b2.place(relx=0.5, rely=0.9, anchor=CENTER)
+
+    return (i1, l1, s1, b1, f1, b2, frames, labels, buttons), logo_icon
