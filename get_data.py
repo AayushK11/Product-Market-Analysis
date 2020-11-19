@@ -1,3 +1,5 @@
+import os
+import sys
 import numpy as np
 import tkinter as tk
 import pandas as pd
@@ -20,6 +22,13 @@ from tkinter.filedialog import askopenfilename
 #7178 test images
 
 #Flip image is an augmentation technique where we invert the image vertically and add it to the database
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 def flip_image(pixels_2d):
     flipped_imge = np.fliplr(pixels_2d)
@@ -63,8 +72,8 @@ def split_train_test(filepath):
 
 def get_file_path():
     try:
-        with open('Dataset/fer2013.csv', 'r'):
-            filepath = 'Dataset/fer2013.csv'
+        with open(resource_path('Dataset/fer2013.csv'), 'r'):
+            filepath = resource_path('Dataset/fer2013.csv')
             print("<-------------------Dataset Found. Splitting And Cleaning Data------------------->")
     except FileNotFoundError:
         print("<-------------------Dataset Not Found------------------->")

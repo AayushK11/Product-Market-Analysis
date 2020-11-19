@@ -1,11 +1,18 @@
 import cv2
 import os
-import time
 from get_data import *
 from model_generation import *
 
 #Image captured from a live video source. Reshaped and used to predict
 #A timer array keeps count of the emotions and returns the most shown emotion after 10 seconds
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 def timer(emotion, timer_array):
     count = timer_array.get(emotion)
@@ -30,8 +37,8 @@ def predict(image, model, timer_array):
 
 def get_face(model):
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
-    cv2_base_dir = os.path.dirname(os.path.abspath(cv2.__file__))
-    haar_model = os.path.join(cv2_base_dir, 'data/haarcascade_frontalface_default.xml')
+    # cv2_base_dir = os.path.dirname(resource_path(cv2.__file__))
+    # haar_model = os.path.join(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     cv2.ocl.setUseOpenCL(False)
 
     timer_array = {"Angry":0, "Disgust":0, "Fear":0, "Happy":0, "Sad":0, "Suprise":0, "Neutral":0}
@@ -42,7 +49,7 @@ def get_face(model):
         _, frame = live_video.read()
         frame = cv2.flip(frame, flipCode=1)
 
-        face_cascade = cv2.CascadeClassifier(haar_model)
+        face_cascade = cv2.CascadeClassifier(resource_path("Extras/haarcascade_frontalface_default.xml"))
         faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minNeighbors=5, minSize=(20, 20))
 
         for (x, y, w, h) in faces:

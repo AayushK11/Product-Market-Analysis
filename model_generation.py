@@ -11,6 +11,13 @@ from get_data import *
 #Saved as CNN_model.json with weights as CNN_weights.h5
 #Model Structure defined in CNN_Model_Details
 #Model Loss graph is CNN_Loss_graph
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 def split_data(train_data, test_data):
     xtr = []
@@ -74,9 +81,9 @@ def model_structure(xtr, ytr, xte, yte):
     print("<-------------------Model Trained. Saving as JSON File------------------->")
 
     model_json = model.to_json()
-    with open("Model/CNN_Model.json", "w") as json_file:
+    with open(resource_path("Model/CNN_Model.json"), "w") as json_file:
         json_file.write(model_json)
-    model.save_weights("Model/CNN_Weights.h5")
+    model.save_weights(resource_path("Model/CNN_Weights.h5"))
     plot_graph(history)
 
 def plot_graph(history):
@@ -86,15 +93,15 @@ def plot_graph(history):
     plt.title("Loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
-    plt.savefig('Model/CNN_Loss.png')
+    plt.savefig(resource_path('Model/CNN_Loss.png'))
     plt.close()
 
 def load_model():
-    json_file = open("Model/CNN_Model.json", 'r')
+    json_file = open(resource_path("Model/CNN_Model.json"), 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)
-    loaded_model.load_weights("Model/CNN_Weights.h5")
+    loaded_model.load_weights(resource_path("Model/CNN_Weights.h5"))
     return loaded_model
 
 def create_cnn_model():

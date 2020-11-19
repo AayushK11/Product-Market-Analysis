@@ -1,7 +1,7 @@
 from tkinter import *
-from tkinter import font
 import tkinter.ttk
 from PIL import ImageTk, Image
+import os
 
 dark_blue = "#0E0C24"
 light_green = "#0BFB2E"
@@ -11,8 +11,17 @@ grey = "#C5B5B5"
 white = "#FFFFFF"
 black = "#000000"
 
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def logo_reshape(x, y):
-    logo_icon = Image.open('Images/PMA_Icon.png')
+    logo_icon = Image.open(resource_path('Images/PMA_Icon.png'))
     logo_icon = logo_icon.resize((x, y))
     logo_icon = ImageTk.PhotoImage(logo_icon)
     return logo_icon
@@ -107,17 +116,17 @@ def home_admin(frame, product, Username):
     for i in product:
         index = product.index(i)
         f_1 = Frame(f1, bg=white, bd=2, width=20, height=25)
-        f_1.grid(row=index, column=0, pady=(5,5), padx=(5, 5))
+        f_1.grid(row=index, column=0, pady=(5, 5), padx=(5, 5))
         l_1 = Label(f1, text=index, fg=black, bg=white, font="None 10")
-        l_1.grid(row=index, column=0, pady=(5,5))
+        l_1.grid(row=index, column=0, pady=(5, 5))
         f_2 = Frame(f1, bg=white, bd=2, width=400, height=25)
-        f_2.grid(row=index, column=1, pady=(5,5), padx=(5, 5))
+        f_2.grid(row=index, column=1, pady=(5, 5), padx=(5, 5))
         l_2 =Label(f1, text=i, fg=black, bg=white, font="None 10")
-        l_2.grid(row=index, column=1, pady=(5,5))
+        l_2.grid(row=index, column=1, pady=(5, 5))
         f_3 = Frame(f1, bg=white, bd=2, width=20, height=25)
-        f_3.grid(row=index, column=2, pady=(5,5), padx=(5, 5))
+        f_3.grid(row=index, column=2, pady=(5, 5), padx=(5, 5))
         rb_1 = Radiobutton(f1, text="x", fg=black, bg=white, bd=0, indicatoron=0, font="None 10")
-        rb_1.grid(row=index, column=2, pady=(5,5))
+        rb_1.grid(row=index, column=2, pady=(5, 5))
         frames.append(f_1)
         frames.append(f_2)
         frames.append(f_3)
@@ -125,7 +134,7 @@ def home_admin(frame, product, Username):
         labels.append(l_2)
         buttons.append(rb_1)
         
-    if len(product)==0:
+    if len(product) ==  0:
         l_1 = Label(f1, text="No Items Available Yet...", fg=light_green, bg=light_dark_blue, font="None 14 bold underline", underline=0)
         l_1.place(relx=0.5, rely=0.5, anchor=CENTER)
         labels.append(l_1)
@@ -156,17 +165,17 @@ def home_user(frame, product, Username):
     for i in product:
         index = product.index(i)
         f_1 = Frame(f1, bg=white, bd=2, width=20, height=25)
-        f_1.grid(row=index, column=0, pady=(5,5), padx=(5, 5))
+        f_1.grid(row=index, column=0, pady=(5, 5), padx=(5, 5))
         l_1 = Label(f1, text=index, fg=black, bg=white, font="None 10")
-        l_1.grid(row=index, column=0, pady=(5,5))
+        l_1.grid(row=index, column=0, pady=(5, 5))
         f_2 = Frame(f1, bg=white, bd=2, width=300, height=25)
-        f_2.grid(row=index, column=1, pady=(5,5), padx=(5, 5))
+        f_2.grid(row=index, column=1, pady=(5, 5), padx=(5, 5))
         l_2 =Label(f1, text=i, fg=black, bg=white, font="None 10")
-        l_2.grid(row=index, column=1, pady=(5,5))
+        l_2.grid(row=index, column=1, pady=(5, 5))
         f_3 = Frame(f1, bg=white, bd=2, width=100, height=25)
-        f_3.grid(row=index, column=2, pady=(5,5), padx=(5, 5))
+        f_3.grid(row=index, column=2, pady=(5, 5), padx=(5, 5))
         rb_1 = Radiobutton(f1, text="Review", fg=black, bg=white, bd=0, indicatoron=0, font="None 10")
-        rb_1.grid(row=index, column=2, pady=(5,5))
+        rb_1.grid(row=index, column=2, pady=(5, 5))
         frames.append(f_1)
         frames.append(f_2)
         frames.append(f_3)
@@ -174,7 +183,7 @@ def home_user(frame, product, Username):
         labels.append(l_2)
         buttons.append(rb_1)
 
-    if len(product)==0:
+    if len(product) == 0:
         l_1 = Label(f1, text="No Items Available Yet...", fg=light_green, bg=light_dark_blue, font="None 14 bold underline", underline=0)
         l_1.place(relx=0.5, rely=0.5, anchor=CENTER)
         labels.append(l_1)

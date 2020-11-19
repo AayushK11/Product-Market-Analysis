@@ -1,4 +1,3 @@
-from numpy.core.fromnumeric import product
 from model_generation import *
 from model_prediction import *
 from graphical_components import *
@@ -20,7 +19,7 @@ class Graphic():
         self.components, logo_icon = splash_screen(self.root.frame)
         self.components[0].config(image=logo_icon)
 
-        self.root.after(100, self.login)
+        self.root.after(3000, self.login)
         self.root.mainloop()
 
     def login(self):
@@ -96,7 +95,7 @@ class Graphic():
 
 
         to_be_reviewed = []
-        admin =  open('Dataset/Login_Admin', 'r')
+        admin =  open(resource_path('Dataset/Login_Admin'), 'r')
         for line_num, line in enumerate(admin):
             if "---->" in line:
                 item = str(line).split('####')
@@ -106,15 +105,15 @@ class Graphic():
         
         start = -1
         already_reviewed = []
-        user =  open('Dataset/Login_User', 'r')
+        user =  open(resource_path('Dataset/Login_User'), 'r')
         for line_num, line in enumerate(user):
             if self.input_text==line:
                 start = line_num
             if '_#_sep_#_' in line and line_num>start and start!=-1:
                 break
             if '---->' in line and start!=-1 and line_num>start:
-                product = str(line).replace('---->','').replace('\n','')
-                already_reviewed.append(product)
+                text = str(line).replace('---->','').replace('\n','')
+                already_reviewed.append(text)
         user.close()
 
         self.products = [x for x in to_be_reviewed if x not in already_reviewed]
@@ -142,15 +141,15 @@ class Graphic():
         products = []
         start = -1
         
-        admin =  open('Dataset/Login_Admin', 'r')
+        admin =  open(resource_path('Dataset/Login_Admin'), 'r')
         for line_num, line in enumerate(admin):
             if self.input_text==line:
                 start = line_num
             if '_#_sep_#_' in line and line_num>start and start!=-1:
                 break
             if '---->' in line and start!=-1 and line_num>start:
-                product = str(line).replace('---->','').replace('\n','').replace("####","--")
-                products.append(product)
+                text = str(line).replace('---->','').replace('\n','').replace("####","--")
+                products.append(text)
 
         self.var = IntVar()
         self.value = 0
@@ -209,17 +208,25 @@ class Graphic():
         if MsgBox == 'yes':
             self.login()
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def check_credentials(username, password):
     flag = 0
     input_text = username+"_#_sep_#_"+password+'\n'
 
-    user = open('Dataset/Login_User', 'r')
+    user = open(resource_path('Dataset/Login_User'), 'r')
     for credentials in user:
         if input_text==credentials:
             flag = 1
     user.close()
 
-    admin =  open('Dataset/Login_Admin', 'r')
+    admin =  open(resource_path('Dataset/Login_Admin'), 'r')
     for credentials in admin:
         if input_text==credentials:
             flag = 2
@@ -230,72 +237,72 @@ def check_credentials(username, password):
 def create_account(username, password, choice):
     
     if choice==1:
-        user = open('Dataset/Login_User', 'a')
+        user = open(resource_path('Dataset/Login_User'), 'a')
         text = username+"_#_sep_#_"+password+'\n'
         user.write(text)
         user.close()
 
     if choice==2:
-        admin = open('Dataset/Login_Admin', 'a')
+        admin = open(resource_path('Dataset/Login_Admin'), 'a')
         text = username+"_#_sep_#_"+password+'\n'
         admin.write(text)
         admin.close()
 
 def add_item(value, input_text):
     out_file = []
-    with open('Dataset/Login_Admin', 'r') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         in_file = admin.readlines()
         for line in in_file:
             out_file.append(line)
             if input_text==line:
                 out_file.append("---->"+str(value)+'\n')
     admin.close()
-    with open('Dataset/Login_Admin', 'w') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'w') as admin:
         admin.writelines(out_file)
 
 def delete_item(choice, input_text):
     lines = []
     start = -1
     text = ''
-    with open('Dataset/Login_Admin', 'r') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         for line_num, line in enumerate(admin):
             if input_text==line:
                 start = line_num
     admin.close()
-    with open('Dataset/Login_Admin', 'r') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         lines = admin.readlines()
     admin.close()
     if start!=-1:
         text = lines[start+1+choice]
         lines.remove(lines[start+1+choice])
-    with open('Dataset/Login_Admin', 'w') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'w') as admin:
         admin.writelines(lines)
     text = str(text).split('####')
-    with open('Dataset/Login_User', 'r') as user:
+    with open(resource_path('Dataset/Login_User'), 'r') as user:
         lines = user.readlines()
     user.close()
     text[0] = text[0]+"\n"
     for i in lines:
         if str(i)==str(text[0]):
             lines.remove(i)
-    with open('Dataset/Login_User', 'w') as user:
+    with open(resource_path('Dataset/Login_User'), 'w') as user:
         user.writelines(lines)
 
 def update_records(item, input_text, average_emotion):
     out_file = []
-    with open('Dataset/Login_User', 'r') as user:
+    with open(resource_path('Dataset/Login_User'), 'r') as user:
         in_file = user.readlines()
         for line in in_file:
             out_file.append(line)
             if input_text==line:
                 out_file.append("---->"+str(item)+'\n')
     user.close()
-    with open('Dataset/Login_User', 'w') as user:
+    with open(resource_path('Dataset/Login_User'), 'w') as user:
         user.writelines(out_file)
 
     out_file = []
     line_value = "---->"+str(item)
-    with open('Dataset/Login_Admin', 'r') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         in_file = admin.readlines()
         for line in in_file:
             if str(line_value+'\n')==line:
@@ -303,12 +310,12 @@ def update_records(item, input_text, average_emotion):
             else:
                 out_file.append(line)
     admin.close()
-    with open('Dataset/Login_Admin', 'w') as admin:
+    with open(resource_path('Dataset/Login_Admin'), 'w') as admin:
         admin.writelines(out_file)
 
 def start_emotion_prediction():
     try:
-        with open('Model/CNN_Model.json', 'r'):
+        with open(resource_path('Model/CNN_Model.json'), 'r'):
             model = load_model()
             average_emotion = get_face(model)
             return average_emotion
