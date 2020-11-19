@@ -13,7 +13,6 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-
 def timer(emotion, timer_array):
     count = timer_array.get(emotion)
     count += 1
@@ -36,7 +35,7 @@ def predict(image, model, timer_array):
     return emotion[index], color[index], timer_array
 
 def get_face(model):
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
     # cv2_base_dir = os.path.dirname(resource_path(cv2.__file__))
     # haar_model = os.path.join(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     cv2.ocl.setUseOpenCL(False)

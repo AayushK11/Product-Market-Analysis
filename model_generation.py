@@ -11,13 +11,6 @@ from get_data import *
 #Saved as CNN_model.json with weights as CNN_weights.h5
 #Model Structure defined in CNN_Model_Details
 #Model Loss graph is CNN_Loss_graph
-def resource_path(relative_path):
-    try:
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
 
 def split_data(train_data, test_data):
     xtr = []
@@ -105,7 +98,7 @@ def load_model():
     return loaded_model
 
 def create_cnn_model():
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
     train_data, test_data = get_file_path()
     xtr, ytr, xte, yte = split_data(train_data, test_data)
     print("<-------------------Training Model------------------->")

@@ -208,14 +208,6 @@ class Graphic():
         if MsgBox == 'yes':
             self.login()
 
-def resource_path(relative_path):
-    try:
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-
 def check_credentials(username, password):
     flag = 0
     input_text = username+"_#_sep_#_"+password+'\n'
@@ -304,11 +296,14 @@ def update_records(item, input_text, average_emotion):
     line_value = "---->"+str(item)
     with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         in_file = admin.readlines()
+        print(line_value)
         for line in in_file:
-            if str(line_value+'\n')==line:
-                out_file.append(line_value+"####"+average_emotion+'\n')
+            line = line.replace("\n","")
+            line_array = line.split("####")
+            if str(line_value)==str(line_array[0]):
+                out_file.append(line+"####"+average_emotion+'\n')
             else:
-                out_file.append(line)
+                out_file.append(line+"\n")
     admin.close()
     with open(resource_path('Dataset/Login_Admin'), 'w') as admin:
         admin.writelines(out_file)
