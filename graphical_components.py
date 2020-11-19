@@ -121,7 +121,7 @@ def home_admin(frame, product, Username):
         l_1.grid(row=index, column=0, pady=(5, 5))
         f_2 = Frame(f1, bg=white, bd=2, width=400, height=25)
         f_2.grid(row=index, column=1, pady=(5, 5), padx=(5, 5))
-        l_2 =Label(f1, text=i, fg=black, bg=white, font="None 10")
+        l_2 = Label(f1, text=i, fg=black, bg=white, font="None 10")
         l_2.grid(row=index, column=1, pady=(5, 5))
         f_3 = Frame(f1, bg=white, bd=2, width=20, height=25)
         f_3.grid(row=index, column=2, pady=(5, 5), padx=(5, 5))
@@ -134,7 +134,7 @@ def home_admin(frame, product, Username):
         labels.append(l_2)
         buttons.append(rb_1)
         
-    if len(product) ==  0:
+    if len(product) == 0:
         l_1 = Label(f1, text="No Items Available Yet...", fg=light_green, bg=light_dark_blue, font="None 14 bold underline", underline=0)
         l_1.place(relx=0.5, rely=0.5, anchor=CENTER)
         labels.append(l_1)
@@ -170,7 +170,7 @@ def home_user(frame, product, Username):
         l_1.grid(row=index, column=0, pady=(5, 5))
         f_2 = Frame(f1, bg=white, bd=2, width=300, height=25)
         f_2.grid(row=index, column=1, pady=(5, 5), padx=(5, 5))
-        l_2 =Label(f1, text=i, fg=black, bg=white, font="None 10")
+        l_2 = Label(f1, text=i, fg=black, bg=white, font="None 10")
         l_2.grid(row=index, column=1, pady=(5, 5))
         f_3 = Frame(f1, bg=white, bd=2, width=100, height=25)
         f_3.grid(row=index, column=2, pady=(5, 5), padx=(5, 5))
