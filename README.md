@@ -36,9 +36,9 @@ This dataset consists of 28709 train images and 7178 test images having faces sh
 
 Model Structure:
 
-        1. Model->CNN\Model\Structure.png
+        1. Model-> CNN\Model\Structure.png
 
-        2. Model->CNN\Model\Details.txt
+        2. Model-> CNN\Model\Details.txt
         
 <br>
 
@@ -56,7 +56,7 @@ _ **Other Requirements:** _
     - numpy==1.16.4            → Array Handling
     - matplotlib==3.1.3        → Model Loss Graph Creation
     - pandas==1.0.1            → Reading Dataset
-    - opencv\_python==3.4.2.17 → Live Image Extraction
+    - opencv\python==3.4.2.17  → Live Image Extraction
     - Keras==2.3.1             → ConvNet Model
     - Pillow==8.0.1            → Tkinter Image Display
     
@@ -66,12 +66,12 @@ _ **Other Requirements:** _
 
 Fer2013 dataset:
 
-    [https://www.kaggle.com/deadskull7/fer2013](https://www.kaggle.com/deadskull7/fer2013)
+    https://www.kaggle.com/deadskull7/fer2013](https://www.kaggle.com/deadskull7/fer2013)
 
 Fer2013 benchmark details:
 
-    [https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013](https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013)
+    https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013](https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013)
 
 Tkinter Logo details:
 
-    [https://thenounproject.com/term/product-analysis/1542499/](https://thenounproject.com/term/product-analysis/1542499/)
+    https://thenounproject.com/term/product-analysis/1542499/](https://thenounproject.com/term/product-analysis/1542499/)
