@@ -66,12 +66,12 @@ _ **Other Requirements:** _
 
 Fer2013 dataset:
 
-    https://www.kaggle.com/deadskull7/fer2013](https://www.kaggle.com/deadskull7/fer2013)
+    https://www.kaggle.com/deadskull7/fer2013
 
 Fer2013 benchmark details:
 
-    https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013](https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013)
+    https://paperswithcode.com/sota/facial-expression-recognition-on-fer2013
 
 Tkinter Logo details:
 
-    https://thenounproject.com/term/product-analysis/1542499/](https://thenounproject.com/term/product-analysis/1542499/)
+    https://thenounproject.com/term/product-analysis/1542499/
