@@ -296,7 +296,6 @@ def update_records(item, input_text, average_emotion):
     line_value = "---->"+str(item)
     with open(resource_path('Dataset/Login_Admin'), 'r') as admin:
         in_file = admin.readlines()
-        print(line_value)
         for line in in_file:
             line = line.replace("\n","")
             line_array = line.split("####")
@@ -321,5 +320,5 @@ def start_emotion_prediction():
         return average_emotion
     
 if __name__ == "__main__":
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
     g = Graphic()

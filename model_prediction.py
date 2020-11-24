@@ -46,7 +46,7 @@ def get_face(model):
     
     while True:
         _, frame = live_video.read()
-        frame = cv2.flip(frame, flipCode=1)
+        # frame = cv2.flip(frame, flipCode=1)
 
         face_cascade = cv2.CascadeClassifier(resource_path("Extras/haarcascade_frontalface_default.xml"))
         faces = face_cascade.detectMultiScale(frame, scaleFactor=1.2, minNeighbors=5, minSize=(20, 20))

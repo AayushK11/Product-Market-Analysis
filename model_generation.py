@@ -1,7 +1,7 @@
 import numpy as np
 import os
-from keras.models import Sequential, model_from_json
-from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
+from tensorflow.keras.models import Sequential, model_from_json
+from tensorflow.keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
 from keras.utils.np_utils import to_categorical as tcg
 from keras.layers.convolutional import MaxPooling2D, Convolution2D
 import matplotlib.pyplot as plt
