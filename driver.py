@@ -321,4 +321,5 @@ def start_emotion_prediction():
     
 if __name__ == "__main__":
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+    # start_emotion_prediction()
     g = Graphic()
